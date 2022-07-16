@@ -1,0 +1,7 @@
+{
+    "TOKEN": "",
+    "GUILD_ID": "",
+    "error": {
+        "command_error": "Se ha producido un error al ejecutar este comando"
+    }
+}
