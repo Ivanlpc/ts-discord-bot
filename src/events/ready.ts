@@ -4,7 +4,7 @@ import config from '../../config.json';
 import Event from '../structures/Event';
 import Bot from '../structures/Client';
 
-const event = new Event('ready', (client) => {
+const event = new Event('ready', async (client) => {
 
     if (client instanceof Bot) {
         if (client.getRestCommands().length > 0) {
@@ -14,20 +14,19 @@ const event = new Event('ready', (client) => {
             const CLIENT_ID = client.user?.id
             const GUILD_ID = config.GUILD_ID;
             if (CLIENT_ID) {
-                (async () => {
-                    try {
-                        await rest.put(
-                            Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
-                            body: client.getRestCommands()
+                try {
+                    await rest.put(
+                        Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
+                        body: client.getRestCommands()
                         }
-                        );
+                    );
 
-                        console.log('All commands has been registered');
+                    console.log('All commands has been registered');
 
-                    } catch (error) {
-                        if (error) console.error(error);
-                    }
-                })();
+                } catch (error) {
+                    if (error) console.error(error);
+                }
+
             }
         }
         console.log(`Logged as ${client.user?.tag}`);
