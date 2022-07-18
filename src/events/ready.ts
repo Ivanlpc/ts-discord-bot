@@ -4,7 +4,7 @@ import config from '../../config.json';
 import Event from '../structures/Event';
 import Bot from '../structures/Client';
 
-const event = new Event('ready', async (client) => {
+const event = new Event('ready', async (client): Promise<void> => {
 
     if (client instanceof Bot) {
         if (client.getRestCommands().length > 0) {

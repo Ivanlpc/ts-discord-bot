@@ -1,4 +1,4 @@
-import { Client, Collection } from "discord.js";
+import { Client, Collection, Intents } from "discord.js";
 import Command from "./Command";
 
 export default class Bot extends Client {
@@ -6,7 +6,7 @@ export default class Bot extends Client {
     private commands: Collection<string, Command>;
 
     constructor() {
-        super({intents: []});
+        super({intents: [Intents.FLAGS.GUILDS]});
         this.RestCommands = new Array();
         this.commands = new Collection();
     }
